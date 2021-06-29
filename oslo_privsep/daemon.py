@@ -272,11 +272,16 @@ def _fd_logger(level=logging.WARN):
 
 def replace_logging(handler, log_root=None):
     pass
-    # if log_root is None:
-    #     log_root = logging.getLogger(None).logger  # root logger
-    # for h in log_root.handlers:
-    #     log_root.removeHandler(h)
+    if log_root is None:
+        log_root = logging.getLogger(None).logger  # root logger
+    for h in log_root.handlers:
+        log_root.removeHandler(h)
     # log_root.addHandler(handler)
+    handler = pylogging.StreamHandler(sys.stdout)
+    handler.setLevel(pylogging.DEBUG)
+    formatter = pylogging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    log_root.addHandler(handler)
 
 
 def un_monkey_patch():
