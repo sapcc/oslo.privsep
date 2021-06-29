@@ -271,11 +271,12 @@ def _fd_logger(level=logging.WARN):
 
 
 def replace_logging(handler, log_root=None):
-    if log_root is None:
-        log_root = logging.getLogger(None).logger  # root logger
-    for h in log_root.handlers:
-        log_root.removeHandler(h)
-    log_root.addHandler(handler)
+    pass
+    # if log_root is None:
+    #     log_root = logging.getLogger(None).logger  # root logger
+    # for h in log_root.handlers:
+    #     log_root.removeHandler(h)
+    # log_root.addHandler(handler)
 
 
 def un_monkey_patch():
